@@ -9,20 +9,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CekTagihanActivity">
+
+        </activity>
+        <activity
+            android:name=".SebelumLoginActivity"
+            android:label="@string/title_activity_sebelum_login"
+            android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SebelumLoginActivity"
-            android:label="@string/title_activity_sebelum_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".SeteahLoginActivity"
             android:label="@string/title_activity_seteah_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
