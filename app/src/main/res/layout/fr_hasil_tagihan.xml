@@ -195,14 +195,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="bayar"
-            android:id="@+id/btnBayar" />
+            android:text="Back"
+            android:id="@+id/btnBackHasilTagihan" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Simpan ke Favorite"
-            android:id="@+id/btnSimpanKeFavorite" />
+            android:text="Bayar"
+            android:id="@+id/btnBayarTagihan" />
     </LinearLayout>
 
 </LinearLayout>
