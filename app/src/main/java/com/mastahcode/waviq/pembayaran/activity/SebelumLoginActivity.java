@@ -1,4 +1,4 @@
-package com.mastahcode.waviq.pembayaran;
+package com.mastahcode.waviq.pembayaran.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mastahcode.waviq.pembayaran.R;
 import com.mastahcode.waviq.pembayaran.fragment.CekTagihanFragment;
 import com.mastahcode.waviq.pembayaran.fragment.LoginFragment;
 import com.mastahcode.waviq.pembayaran.fragment.RegistrasiFragment;

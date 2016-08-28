@@ -1,0 +1,10 @@
+Panduan Membuat Database SQLite di Android
+1. Bikin Contract Class, class untuk mendefinisikan Schema
+2. Bikin final class, maksudnya supaya gak bisa di extends
+3. Bikin Constractor yang kosong supaya tidak bisa di instanskan, gak bisa di panggil
+4. Bikin nama tabelnya, kolomnya sesuai objek kolom yang diperlukan
+5. Bikin SQL helper, sudah disediakan android, class untuk membantu kita berinteraksi dengan database
+    (dengan extends SqliteOpenHelper) dan implements constructornya
+6. Bikin perintah SQLnya
+7. dokumentasi lengkapnya ada di link:
+    https://developer.android.com/training/basics/data-storage/databases.html

@@ -1,7 +1,9 @@
-package com.mastahcode.waviq.pembayaran;
+package com.mastahcode.waviq.pembayaran.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mastahcode.waviq.pembayaran.R;
 
 public class CekTagihanActivity extends AppCompatActivity {
 
