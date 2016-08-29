@@ -55,7 +55,7 @@ public class SeteahLoginActivity extends AppCompatActivity
         //load dashbiard setelah kita sukses login
         loadFragment(new DashboardFragment());
         //load dummy data sqlite
-        insertDummyData();
+        //insertDummyData();
     }
 
     @Override

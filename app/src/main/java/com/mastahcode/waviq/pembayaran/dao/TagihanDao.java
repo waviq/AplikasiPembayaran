@@ -39,7 +39,7 @@ public class TagihanDao {
         cv.put(SkemaDatabasePembayaran.TabelTagihan.COLUMN_NAME_BULAN_TAGIHAN, formatter.format(t.getBulanTagihan()));
         cv.put(SkemaDatabasePembayaran.TabelTagihan.COLUMN_NAME_JATUH_TEMPO, formatter.format(t.getJatuhTempo()));
         //Pakai double value karena sqlite gak support bidDecimal, makanya mesti di convert dlo k doubleValue
-        cv.put(SkemaDatabasePembayaran.TabelTagihan.COLUMN_NAME_BULAN_TAGIHAN, t.getNilai().doubleValue());
+        cv.put(SkemaDatabasePembayaran.TabelTagihan.COLUMN_NAME_NILAI, t.getNilai().doubleValue());
 
         db.insert(SkemaDatabasePembayaran.TabelTagihan.TABLE_NAME, null, cv);
     }
