@@ -1,6 +1,8 @@
 package com.mastahcode.waviq.pembayaran.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,7 +31,7 @@ public class LoginFragment extends Fragment {
 
         final View fragmentView = inflater.inflate(R.layout.fr_login, container, false);
 
-        Button btnLogin = (Button) fragmentView.findViewById(R.id.btnLogin);
+        final Button btnLogin = (Button) fragmentView.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,16 +40,55 @@ public class LoginFragment extends Fragment {
                 String username = ((EditText) fragmentView.findViewById(R.id.etEmailLogin)).getText().toString();
                 String password = ((EditText) fragmentView.findViewById(R.id.etPasswordLogin)).getText().toString();
 
-                try {
-                    pembayaranClient.login(username, password);
+                //proses thread
+                //untuk cek berhasil login atau tidaknya, kita return jd tipe data Boolean ketika sukses
+                new AsyncTask<String, Void, Boolean>() {
 
-                    //explisit intent (karena sudah jelas akan menjalankan activity yg mana)
-                    Intent setelahLoginActivity = new Intent(getContext(), SeteahLoginActivity.class);
-                    startActivity(setelahLoginActivity);
-                } catch (GagalLoginException e) {
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT);
-                }
+                    ProgressDialog progressDialog;
 
+                    //variabel penampung jika ada error, nantinya bisa di pakai dimanapun jika diperlukan
+                    String errorMessage;
+
+                    //method yang akan dijalankan, sebelum menjalankan doInbackground
+                    @Override
+                    protected void onPreExecute() {
+                        progressDialog = ProgressDialog.show(getContext(), "Login", "Tunggu bro sabar", true);
+                        btnLogin.setEnabled(false);
+                    }
+
+                    @Override
+                    protected Boolean doInBackground(String... params) {
+                        try {
+                            //param[0] = ambil username
+                            //param[1] =  ambil password
+                            pembayaranClient.login(params[0], params[1]);
+                            return true;
+                        } catch (GagalLoginException e) {
+                            errorMessage = e.getMessage();
+                            return false;
+                        }
+                    }
+
+                    @Override
+                    //method yang dilakukan ketika mengirim ke server
+                    protected void onPostExecute(Boolean sukses) {
+
+                        //button di enable kembali ketika proses login selesai
+                        btnLogin.setEnabled(true);
+                        //dismis kita hilangkan
+                        progressDialog.dismiss();
+                        if (sukses) {
+                            //explisit intent (karena sudah jelas akan menjalankan activity yg mana)
+                            Intent setelahLoginActivity = new Intent(getContext(), SeteahLoginActivity.class);
+                            startActivity(setelahLoginActivity);
+                        } else {
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    //username dan password di dalam parameter excecute, didefinisikan sebagai param ke 0 = username
+                    //dan param ke 1 = password
+                }.execute(username, password);
 
             }
         });

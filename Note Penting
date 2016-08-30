@@ -17,3 +17,50 @@ Membuat service agar konek ke web service
 4. tambahkan gradle spring android, untuk networkmya
 5. tambahkan juga maven repository untuk android springnya (karena blum release), tambahkan di build gradle master
 5. tambahkan gson gradle repo, untuk ngubah dari json ke objek
+
+NetworkOnMainThreadException
+artinya kita tidak boleh melakukan network di main tread (UI Thread), atau main activity, karena network butuh kadang lama,
+sedangkan di android, jika operasi lebih dr 5 detik maka akan d kill/not responding
+
+Macam-macam Thread (thread yang berbeda) di Android
+1. Service
+    - digunakan di proses yang tidak membutuhkan UI, tp sebaiknya tidak terlalu lama, karena biasanya
+        jalan di main tread,
+    - Service, bisa menjalankan multi tread service
+    - code lebih sedikit, karna ckup implement on handler aja
+    - contoh biasane digunakan untuk kirim notif, misal aplikasi lagi mati kita ingin kirim notif tagihan
+      ke user
+
+2. Intent Service
+    - didesaign untuk yang proses lama, tp dalam satu method tidak bisa multi tread jalan bareng (ngantri)
+    - lebih susah codingnya, banyak method yang mesti di implements
+
+3. Asintaks
+    - perlu UI biasanya
+    - threadnya biasanya perpindahan dari UI satu, ke UI yang lainya
+
+    AsyncTask<String, Void, Boolean>()
+    a. String = parameter inputnya
+    b. Void = update progressnya
+    c. Boolean = hasilnya
+
+    method-methodnya yang ada di AsyncTask
+    a. onPreExecute
+        dijalankan sebelum background task (sebelum tugas utama tread dijalankan)
+    b. doInBackground
+        - method utama untuk menjalankan perintah utama atau tugas utama treadnya
+        -  terima masukan sesuai tipe data yang kita definisikan di parameter
+    c. onPostExecute
+        - method melakukan proses post perintah dari doInBackground, return hasilnya klo sukses lakukan
+            sesuatu dan kalau gagal bisa juga diperintahkan lakukan sesuatu
+
+    JANGAN LUPA SETIAP PERINTAH DI AsyncTask, kita WAJIB execute, supaya jalan
+
+java.lang.SecurityException: Permission denied (missing INTERNET permission?)
+Kalo mau akses server internet ke luar, kita mesti kasih permission, cara kasih permissionya
+1. Buka AndroidManifest
+2. tambahkan code berikut:
+    <uses-permission android:name="android.permission.INTERNET" />
+
+ProgressBar
+digunakan untuk progress tampilan UI menunggu sesuatu action d UI, misal untuk proses login
