@@ -8,3 +8,12 @@ Panduan Membuat Database SQLite di Android
 6. Bikin perintah SQLnya
 7. dokumentasi lengkapnya ada di link:
     https://developer.android.com/training/basics/data-storage/databases.html
+
+
+Membuat service agar konek ke web service
+1. bikin fila java Restclient nya
+2. bikin fila java untuk nangkep Exception errornya
+3. network yang di pakai ada banyak (retrofit, volley, okhttp, spring android, dll), cma yang di pakai adalah spring android
+4. tambahkan gradle spring android, untuk networkmya
+5. tambahkan juga maven repository untuk android springnya (karena blum release), tambahkan di build gradle master
+5. tambahkan gson gradle repo, untuk ngubah dari json ke objek
