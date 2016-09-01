@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.mastahcode.waviq.pembayaran.R;
 import com.mastahcode.waviq.pembayaran.dao.TagihanDao;
 import com.mastahcode.waviq.pembayaran.domain.Tagihan;
@@ -26,6 +29,8 @@ import java.text.SimpleDateFormat;
 
 public class SeteahLoginActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "setelah login activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,15 @@ public class SeteahLoginActivity extends AppCompatActivity
         loadFragment(new DashboardFragment());
         //load dummy data sqlite
         //insertDummyData();
+
+        Log.d(TAG, "Memulai registrasi token");
+        //get token firebase
+        String token = FirebaseInstanceId.getInstance().getToken();
+
+        // Log and toast
+        //String msg = getString(R.string.gcm_defaultSenderId, token);
+        Log.d(token, "  ini tokennya");
+        Toast.makeText(SeteahLoginActivity.this, "Token berhasil di regis", Toast.LENGTH_SHORT).show();
     }
 
     @Override

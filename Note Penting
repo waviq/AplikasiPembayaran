@@ -64,3 +64,6 @@ Kalo mau akses server internet ke luar, kita mesti kasih permission, cara kasih 
 
 ProgressBar
 digunakan untuk progress tampilan UI menunggu sesuatu action d UI, misal untuk proses login
+
+Registrasi FCM/GCM
+buka console.google.com

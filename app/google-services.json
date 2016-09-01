@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "225276855711",
+    "firebase_url": "https://aplikasi-pembayaran-142012.firebaseio.com",
+    "project_id": "aplikasi-pembayaran-142012",
+    "storage_bucket": "aplikasi-pembayaran-142012.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225276855711:android:cd827f6abad727d9",
+        "android_client_info": {
+          "package_name": "com.mastahcode.waviq.pembayaran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225276855711-9rreifbsv56pdr1puhjtipr7mah8ilcu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mastahcode.waviq.pembayaran",
+            "certificate_hash": "FD139A201E4ECEFA2C420A7943EF1F25C95CE556"
+          }
+        },
+        {
+          "client_id": "225276855711-klm4ks95ksm9t8fu64rgbmdn3nuos43v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXatXq22xpCP7JpO7WaJl0ZUhpazQj4TU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225276855711-klm4ks95ksm9t8fu64rgbmdn3nuos43v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
