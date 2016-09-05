@@ -1,5 +1,6 @@
 package com.mastahcode.waviq.pembayaran.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ import com.mastahcode.waviq.pembayaran.R;
 import com.mastahcode.waviq.pembayaran.dao.TagihanDao;
 import com.mastahcode.waviq.pembayaran.domain.Tagihan;
 import com.mastahcode.waviq.pembayaran.fragment.DashboardFragment;
+import com.mastahcode.waviq.pembayaran.services.RegistrasiFcmService;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -68,8 +70,15 @@ public class SeteahLoginActivity extends AppCompatActivity
 
         // Log and toast
         //String msg = getString(R.string.gcm_defaultSenderId, token);
-        Log.d(token, "  ini tokennya");
-        Toast.makeText(SeteahLoginActivity.this, "Token berhasil di regis", Toast.LENGTH_SHORT).show();
+        /*Log.d("tokenya: ", token);
+        Toast.makeText(SeteahLoginActivity.this, "Token berhasil di regis", Toast.LENGTH_SHORT).show();*/
+
+
+        //ambil email dr login email
+        String email = getIntent().getStringExtra("email");
+        Intent intent =  new Intent(this, RegistrasiFcmService.class);
+        intent.putExtra("email", email);
+        startService(intent);
     }
 
     @Override

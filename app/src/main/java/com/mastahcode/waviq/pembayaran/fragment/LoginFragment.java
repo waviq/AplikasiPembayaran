@@ -48,6 +48,7 @@ public class LoginFragment extends Fragment {
 
                     //variabel penampung jika ada error, nantinya bisa di pakai dimanapun jika diperlukan
                     String errorMessage;
+                    String email;
 
                     //method yang akan dijalankan, sebelum menjalankan doInbackground
                     @Override
@@ -59,6 +60,8 @@ public class LoginFragment extends Fragment {
                     @Override
                     protected Boolean doInBackground(String... params) {
                         try {
+
+                            email = params[0];
                             //param[0] = ambil username
                             //param[1] =  ambil password
                             pembayaranClient.login(params[0], params[1]);
@@ -80,6 +83,7 @@ public class LoginFragment extends Fragment {
                         if (sukses) {
                             //explisit intent (karena sudah jelas akan menjalankan activity yg mana)
                             Intent setelahLoginActivity = new Intent(getContext(), SeteahLoginActivity.class);
+                            setelahLoginActivity.putExtra("email", email);
                             startActivity(setelahLoginActivity);
                         } else {
                             Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();

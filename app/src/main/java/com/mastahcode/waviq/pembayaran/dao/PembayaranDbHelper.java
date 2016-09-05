@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by waviq on 28/08/2016.
+ *
  */
 public class PembayaranDbHelper extends SQLiteOpenHelper {
 
